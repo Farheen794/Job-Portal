@@ -94,7 +94,7 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({
-        message: "Incorrect email or password",
+        message: "Incorrect email",
         success: false,
       });
     }
@@ -102,7 +102,7 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({
-        message: "Incorrect email or password",
+        message: "Incorrect password",
         success: false,
       });
     }
