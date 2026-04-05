@@ -17,9 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: ["https://job-portal-frontend-a2pe.onrender.com"],
+  origin: process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : ["https://job-portal-frontend-a2pe.onrender.com"],
   credentials: true,
 };
+
 
 app.use(cors(corsOptions));
 
